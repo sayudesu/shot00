@@ -26,6 +26,7 @@ void SceneMain::init()
 
 	m_player.setHandle(m_hPlayerGraphic);
 	m_player.init();
+	m_player.setMain(this);
 
 	for (auto& shot : m_shot)
 	{
@@ -49,24 +50,7 @@ void SceneMain::update()
 	{
 		shot.update();
 	}
-	m_shotInterval--;
-	if (m_shotInterval < 0) m_shotInterval = 0;
 
-	// キー入力処理
-	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	if (padState & PAD_INPUT_1 && (m_shotInterval <= 0))
-	{
-		for (auto& shot : m_shot)
-		{
-			//次の手裏剣を確認する
-			if (shot.isExist()) continue;
-
-			shot.start(m_player.getPos());
-			m_shotInterval = kShotInterval;
-			break;
-		}
-	}
-	//m_shot[0].start(m_player.getPos());
 }
 
 // 毎フレームの描画
@@ -87,4 +71,17 @@ void SceneMain::draw()
 	}
 	DrawFormatString(0,0, GetColor(255, 255, 255), "弾の数:%d", shotNum);
 
+}
+
+bool SceneMain::createShot(Vec2 pos)
+{
+	for (auto& shot : m_shot)
+	{
+		//次の手裏剣を確認する
+		if (shot.isExist()) continue;
+
+		shot.start(m_player.getPos());
+		return true;
+	}
+	return false;
 }
