@@ -11,7 +11,6 @@ SceneMain::SceneMain()
 {
 	m_hPlayerGraphic = -1;
 	m_hShotGraphic = -1;
-	m_shotInterval = 0;
 }
 SceneMain::~SceneMain()
 {
@@ -32,7 +31,6 @@ void SceneMain::init()
 	{
 		shot.setHandle(m_hShotGraphic);
 	}
-	m_shotInterval = 0;
 }
 
 // I—¹ˆ—
