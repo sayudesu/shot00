@@ -1,8 +1,7 @@
 #pragma once
 
 #include "player.h"
-#include "ShotNormal.h"
-#include "ShotBound.h"
+#include "ShotBase.h"
 
 class SceneMain
 {
@@ -36,9 +35,8 @@ private:
 	// プレイヤー
 	Player m_player;
 	// ショット
+	ShotBase* m_pShot[kShotMax];
 
-//	ShotBase* m_pShot[kShotMax];
-
-	ShotNormal* m_pShotNormal[kShotMax];
-	ShotBound*  m_pShotBound[kShotMax];
+//	ShotNormal* m_pShotNormal[kShotMax];
+//	ShotBound*  m_pShotBound[kShotMax];
 };
