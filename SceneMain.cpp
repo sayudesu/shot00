@@ -3,6 +3,7 @@
 #include "SceneMain.h"
 #include "ShotNormal.h"
 #include "ShotBound.h"
+#include <cassert>
 
 namespace
 {
@@ -39,7 +40,9 @@ void SceneMain::end()
 
 	for (auto& pShot : m_pShotVt)
 	{
-		if (!pShot) continue;
+		
+		assert(pShot); //null(false)(0)ÇÃèÍçáé~ÇﬂÇÈ
+
 		delete pShot;
 		pShot = nullptr;
 	}

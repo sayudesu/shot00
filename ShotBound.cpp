@@ -34,12 +34,12 @@ void ShotBound::start(Vec2 pos)
 void ShotBound::update()
 {
 	if (!m_isExist) return;
-	m_pos -= m_vec;
+	m_pos += m_vec;
 
-	m_vec.y -= kDropSpeed;
+	m_vec.y += kDropSpeed;
 
-	if (m_pos.y >= 0)
+	if (m_pos.y >= Game::kScreenHeight)
 	{
-		m_vec.y += kBoundSpeed;
+		m_vec.y -= kBoundSpeed;
 	}
 }

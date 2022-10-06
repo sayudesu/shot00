@@ -69,44 +69,36 @@ void Player::update()
 			m_shotInterval = kShotInterval;
 		}
 	}
-	/*
-	if (CheckHitKey(KEY_INPUT_X) && (m_shotInterval <= 0))
-	{
-		if (m_pMain->createShot(getPos()))
-		{
-			m_shotInterval = kShotInterval;
-		}
-	}
-	*/
+
 	if (padState & PAD_INPUT_UP)
 	{
 		m_vec.y -= kAcc;
-		//if (m_vec.y < -kSpeedMax)	m_vec.y = -kSpeedMax;
+		if (m_vec.y < -kSpeedMax)	m_vec.y = -kSpeedMax;
 	}
 	else if (padState & PAD_INPUT_DOWN)
 	{
 		m_vec.y += kAcc;
-		//if (m_vec.y > kSpeedMax)	m_vec.y = kSpeedMax;
+		if (m_vec.y > kSpeedMax)	m_vec.y = kSpeedMax;
 	}
 	else
 	{
-		//m_vec.y *= 0.9f;
+		m_vec.y *= 0.9f;
 	}
 	if (padState & PAD_INPUT_LEFT)
 	{
 		m_vec.x -= kAcc;
-		//if (m_vec.x < -kSpeedMax)	m_vec.x = -kSpeedMax;
+		if (m_vec.x < -kSpeedMax)	m_vec.x = -kSpeedMax;
 	}
 	else if (padState & PAD_INPUT_RIGHT)
 	{
 		m_vec.x += kAcc;
-		//if (m_vec.x > kSpeedMax)	m_vec.x = kSpeedMax;
+		if (m_vec.x > kSpeedMax)	m_vec.x = kSpeedMax;
 	}
 	else
 	{
-		//m_vec.x *= 0.9f;
+		m_vec.x *= 0.9f;
 	}
-	//m_pos += m_vec;
+	m_pos += m_vec;
 }
 
 void Player::draw()

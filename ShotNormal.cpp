@@ -39,5 +39,4 @@ void ShotNormal::update()
 	{
 		m_vec.y += kBoundSpeed;		
 	}
-
 }
