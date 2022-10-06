@@ -24,6 +24,9 @@ void ShotBound::start(Vec2 pos)
 {
 	ShotBase::start(pos);
 
+	float randAngle = static_cast<float>(GetRand(359));
+	float rad = randAngle * DX_PI_F / 180.0; //ƒ‰ƒWƒAƒ“
+
 	m_vec.x = -kShotSpeed;
 	m_vec.y = 0.0f;
 }
